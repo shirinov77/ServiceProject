@@ -1,0 +1,343 @@
+/* Google font - O'zbek va ruscha uchun (Cyrillic support bilan) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap'); /* Yaxshi Cyrillic support */
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@300;400;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: 'Inter', 'PT Sans', sans-serif; /* Inter - yaxshi Cyrillic uchun, PT Sans fallback */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('https://w0.peakpx.com/wallpaper/665/962/HD-wallpaper-manzara-nature-other.jpg') no-repeat center center/cover;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  animation: pageLoad 1s ease 0.5s forwards;
+  will-change: opacity, transform;
+}
+
+/* Ruscha uchun maxsus font */
+[lang="ru"] {
+  font-family: 'PT Sans', 'Inter', sans-serif;
+}
+
+[lang="uz"] {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Dark overlay for better contrast */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+  z-index: -1;
+}
+
+/* Page load animation */
+@keyframes pageLoad {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Container */
+.container {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  width: min(90%, 350px);
+  min-height: 280px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  animation: slideIn 0.5s ease 0.7s forwards;
+  z-index: 10;
+  will-change: transform, opacity;
+}
+
+/* Slide-in animation for container */
+@keyframes slideIn {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.profile img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  border: 3px solid rgba(255, 255, 255, 0.6);
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+
+.profile img:hover {
+  transform: scale(1.1);
+}
+
+h1 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.subtitle {
+  font-size: 14px;
+  margin-bottom: 25px;
+  color: #e0e0e0;
+  font-weight: 300;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Button container for gradient and blur effect */
+.button-container {
+  position: relative;
+  padding: 3px;
+  background: linear-gradient(90deg, #03a9f4, #f441a5);
+  border-radius: 0.9em;
+  transition: all 0.4s ease;
+}
+
+.button-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  border-radius: 0.9em;
+  z-index: -10;
+  filter: blur(0);
+  transition: filter 0.4s ease;
+}
+
+.button-container:hover::before {
+  background: linear-gradient(90deg, #03a9f4, #f441a5);
+  filter: blur(1.2em);
+}
+
+.button-container:active::before {
+  filter: blur(0.2em);
+}
+
+.link-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1em;
+  padding: 0.8em 1em;
+  border-radius: 0.5em;
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Oyna ramkasi kabi chegara */
+  background: rgba(255, 255, 255, 0.1); /* Shaffof oyna effekti */
+  backdrop-filter: blur(10px); /* Orqa fonni loyqa qilish, oyna kabi */
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1); /* Ichki yorug'lik */
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  width: 100%;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  will-change: transform, background, box-shadow;
+}
+
+.link-btn::before {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.2), transparent); /* Yorug'lik effekti */
+  transition: top 0.6s ease;
+}
+
+.link-btn:hover::before {
+  top: 100%;
+}
+
+.link-btn:hover {
+  background: rgba(255, 255, 255, 0.15); /* Hover da biroz yorqinroq */
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(255, 255, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2); /* Ko'proq yorug'lik */
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.link-btn:active {
+  transform: translateY(-1px) scale(0.98);
+  transition: all 0.2s ease;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Periodic button glow animation */
+.link-btn.pulse {
+  animation: glowPulse 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes glowPulse {
+  0% { 
+    box-shadow: 
+      0 4px 15px rgba(0, 0, 0, 0.2),
+      0 0 0 rgba(3, 169, 244, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1); 
+  }
+  100% { 
+    box-shadow: 
+      0 4px 15px rgba(0, 0, 0, 0.2),
+      0 0 30px rgba(244, 65, 165, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2); 
+    transform: scale(1.02);
+  }
+}
+
+.title {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 2px;
+  position: relative;
+  z-index: 20;
+}
+
+.desc {
+  font-size: 11px;
+  opacity: 0.85;
+  font-weight: 300;
+  position: relative;
+  z-index: 20;
+}
+
+/* Til o'zgartirish tugmasi */
+.lang-btn {
+  background: rgba(255, 255, 255, 0.1); /* Shaffof oyna kabi */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-bottom: 15px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  width: 100%;
+  text-align: center;
+}
+
+.lang-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+  .container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .link-btn {
+    padding: 0.7em 0.9em;
+    font-size: 1em;
+  }
+
+  .title {
+    font-size: 13px;
+  }
+}
+
+/* PHONE PAGE BUTTON - kept for reference */
+.call-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #28a745, #20c997);
+  color: white;
+  padding: 16px 32px;
+  border-radius: 16px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+}
+
+.call-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.call-btn:hover::before {
+  left: 100%;
+}
+
+.call-btn i {
+  margin-right: 8px;
+}
+
+.call-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
+}
+
+.call-btn.calling {
+  animation: pulse 1.5s infinite;
+  background: linear-gradient(135deg, #218838, #1ea085);
+  box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px 10px rgba(40, 167, 69, 0.4);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
+  }
+}
+
+/* Particle styles */
+.particle {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  animation: float 10s infinite linear;
+  will-change: transform;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-100vh); opacity: 0; }
+}
